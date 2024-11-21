@@ -1,0 +1,10 @@
+App_Data/
+packages/
+bin/
+obj/
+*.user
+*.suo
+.vs
+*.nuget.targets
+*.lock.json
+examples/*/northwind.db

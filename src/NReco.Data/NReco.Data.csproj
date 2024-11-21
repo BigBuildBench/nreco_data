@@ -1,0 +1,86 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Fast lightweight data access library for .NET Core (micro-ORM): simple API for CRUD operations, dynamic queries, SQL commands generation (command builder), abstract queries that have simple string representation + parser, schema-less data access, flexible query results mapping to annotated POCO models, app-level data views, RecordSet structure (replacement for DataTable). Try out NReco.Data if you're looking for Dapper alternative with abstract queries and automated SQL generation.</Description>
+    <Title>Micro-ORM with abstract queries and SQL generation for any ADO.NET connector.</Title>
+	<Copyright>Copyright (c) 2016-2023 Vitalii Fedorchenko</Copyright>
+    <AssemblyTitle>NReco.Data</AssemblyTitle>
+    <VersionPrefix>1.2.10</VersionPrefix>
+    <Authors>Vitalii Fedorchenko</Authors>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>NReco.Data</AssemblyName>
+    <PackageId>NReco.Data</PackageId>
+    <PackageTags>DAL;ado.net;data;sql;query;generator;sql-builder;database;orm;micro-orm;data-mapper;poco;schema-less;relex;recordset;netstandard;netcore;net45</PackageTags>
+	<PackageReleaseNotes>Source code and examples: https://github.com/nreco/data
+API reference: https://www.nrecosite.com/doc/NReco.Data/
+
+v.1.2.10 changes:
+- Make DbFactory.CreateConnection virtual to allow specific connection handling in inheritors #71
+
+v.1.2.9 changes:
+- StringTemplate added support of nested tokens (controlled via ReplaceNestedTokens property) #70
+
+v.1.2.8 changes:
+- QRawSql/QRaw: ability to specify custom SQL with parameters #69
+
+v.1.2.7 changes:
+- StringTemplate: alternative syntax for token placeholders #68
+
+v.1.2.6 changes:
+- Not (QNegationNode) is not supported by RelexParser #67
+
+v.1.2.5 changes:
+- RecordSet.Column.DataType is null when loaded from the DbDataReader with default "GetColumnSchema" implementation #65
+
+v.1.2.4 changes:
+- handle DbGenerated attribute with option "None" correctly #64
+
+v.1.2.3 changes:
+- now DbFactory.AddCommandParameter is virtual
+- added DbFactory.GetCmdParameterName (to allow very custom param names - like for Snowflake ADO.NET provider)
+
+v.1.2.2 changes:
+- fixed DbDataAdapter.Select().ExecuteReader offset/count handling when ApplyOffset=true #63
+
+v.1.2.1 changes:
+- QAggregateField: ability to specify custom SQL template #62
+
+v.1.2.0 changes:
+- added simple aggregate queries with QAggregateField #60
+- fixed issue with RelexBuilder and QVar #61
+
+v.1.1.1 changes:
+- fixed issue with DbDataAdapter.Update for RecordSet when query contains parameters that are not mapped to Row columns #55
+		
+</PackageReleaseNotes>	
+    <PackageIconUrl>https://www.nrecosite.com/img/nreco-logo-200.png</PackageIconUrl>
+    <PackageProjectUrl>https://www.nrecosite.com/dalc_net.aspx</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/nreco/data/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/nreco/data</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>	
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.5' ">1.6.0</NetStandardImplicitPackageVersion>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateNeutralResourcesLanguageAttribute>false</GenerateNeutralResourcesLanguageAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>NReco.Data.snk</AssemblyOriginatorKeyFile>	
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+  </ItemGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <DefineConstants>$(DefineConstants);NET_STANDARD;NET_STANDARD2</DefineConstants>
+  </PropertyGroup>  
+  
+</Project>

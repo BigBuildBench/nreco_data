@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>SqliteDemo.CommandBuilder</AssemblyName>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>  
+    <MySourceFiles Include="$(MSBuildProjectDirectory)/../DemoData/northwind.db"/>  
+  </ItemGroup>
+  <Target Name="CopySqliteDbFile" BeforeTargets="Build">
+	<Copy SourceFiles="@(MySourceFiles)"  
+          DestinationFolder="$(MSBuildProjectDirectory)"/>  
+  </Target>    
+  
+</Project>
